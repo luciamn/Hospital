@@ -22,6 +22,9 @@ public class Paciente {
     @Column(name = "apellidos", nullable = false)
     private String apellidos;
 
+    @Column(name = "contrasena", nullable = false)
+    private String contrasena;
+
     @Column(name = "dni", nullable = false)
     private String dni;
 
