@@ -1,12 +1,17 @@
 package es.cesar.hospital.modelos;
 
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
+import org.hibernate.annotations.Fetch;
 
 import javax.persistence.*;
 import java.util.List;
 
 @Data
+@NoArgsConstructor
+@AllArgsConstructor
 @Entity
 @Table(name = "paciente", uniqueConstraints ={
                                                 @UniqueConstraint(columnNames = "email"),
@@ -42,87 +47,16 @@ public class Paciente {
     @Column(name = "habitacion")
     private List<Habitacion> habitacion;
     
-    @ManyToMany
-    @JoinColumn(name = "cita")
-    private List<Cita> cita;
-
-    //Getters y Setters
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getNombre() {
-        return nombre;
-    }
-
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
-
-    public String getApellidos() {
-        return apellidos;
-    }
-
-    public void setApellidos(String apellidos) {
-        this.apellidos = apellidos;
-    }
-
-    public String getContrasena() {
-        return contrasena;
-    }
-
-    public void setContrasena(String contrasena) {
-        this.contrasena = contrasena;
-    }
-
-    public String getDni() {
-        return dni;
-    }
-
-    public void setDni(String dni) {
-        this.dni = dni;
-    }
-
-    public String getTelefono() {
-        return telefono;
-    }
-
-    public void setTelefono(String telefono) {
-        this.telefono = telefono;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public List<Habitacion> getHabitacion() {
-        return habitacion;
-    }
-
-    public void setHabitacion(List<Habitacion> habitacion) {
-        this.habitacion = habitacion;
-    }
-
-    public List<Cita> getCita() {
-        return cita;
-    }
-
-    public void setCita(List<Cita> cita) {
-        this.cita = cita;
-    }
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinTable(name = "cita",
+               joinColumns = @JoinColumn(name = "paciente_id", referencedColumnName = "id"),
+               inverseJoinColumns = @JoinColumn(name = "cita_id", referencedColumnName = "id")
+    )
+    private Cita cita;
 
     //Constructores
 
-    public Paciente(Long id, String nombre, String apellidos, String contrasena, String email, String dni, String telefono, List<Habitacion> habitacion, List<Cita> cita) {
-        this.id = id;
+    public Paciente(String nombre, String apellidos, String contrasena, String email, String dni, String telefono, List<Habitacion> habitacion, Cita cita) {
         this.nombre = nombre;
         this.apellidos = apellidos;
         this.contrasena = contrasena;
@@ -131,20 +65,5 @@ public class Paciente {
         this.telefono = telefono;
         this.habitacion = habitacion;
         this.cita = cita;
-    }
-
-    public Paciente(String nombre, String apellidos, String contrasena, String email, String dni, String telefono, List<Habitacion> habitacion, List<Cita> cita) {
-        this.nombre = nombre;
-        this.apellidos = apellidos;
-        this.contrasena = contrasena;
-        this.email = email;
-        this.dni = dni;
-        this.telefono = telefono;
-        this.habitacion = habitacion;
-        this.cita = cita;
-    }
-
-    public Paciente() {
-        super();
     }
 }
