@@ -38,7 +38,7 @@ public class Personal {
     private TipoPersonal tipoPersonal;
 
     @ManyToMany
-    @JoinColumn(name = "cita", nullable = false)
+    @Column(name = "cita")
     private List<Cita> cita;
 
     @OneToMany

@@ -18,7 +18,7 @@ public class Turno {
     private String tipo;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "personal", nullable = false)
+    @Column(name = "personal", nullable = false)
     private Personal personal;
     
 }

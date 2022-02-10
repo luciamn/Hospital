@@ -18,5 +18,6 @@ public class TipoVacuna {
     private String nombre;
 
     @ManyToOne(fetch = FetchType.EAGER)
+    @Column(name = "vacuna", nullable = false)
     private Vacuna vacuna;
 }

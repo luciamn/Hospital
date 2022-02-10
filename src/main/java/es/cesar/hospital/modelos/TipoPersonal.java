@@ -20,5 +20,6 @@ public class TipoPersonal {
     private String tipo;
 
     @ManyToOne(fetch = FetchType.EAGER)
+    @Column(name = "personal", nullable = false)
     private Personal personal;
 }
