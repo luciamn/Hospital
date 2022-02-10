@@ -23,7 +23,7 @@ public class Habitacion {
     @JoinColumn(name="zona", nullable = false)
     private List<Zona> zona;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "paciente")
     private Paciente paciente;
     

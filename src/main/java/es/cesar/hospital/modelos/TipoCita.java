@@ -18,7 +18,7 @@ public class TipoCita {
     @JoinColumn(name = "tipo_cita", nullable = false)
     private String tipo_cita;
     
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "cita", nullable = false)
     private Cita cita;
 

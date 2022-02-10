@@ -19,6 +19,6 @@ public class TipoPersonal {
     @Column(name = "tipo", nullable = false)
     private String tipo;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     private Personal personal;
 }

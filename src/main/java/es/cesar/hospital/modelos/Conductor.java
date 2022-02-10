@@ -9,7 +9,7 @@ import java.util.List;
 @Table(name = "conductor")
 public class Conductor extends Personal{
 
-    @OneToMany
+    @OneToMany(fetch = FetchType.LAZY)
     @JoinColumn(name = "ambulancia", nullable = false)
     private List<Ambulancia> ambulancia;
 

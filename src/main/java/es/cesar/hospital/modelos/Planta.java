@@ -18,7 +18,7 @@ public class Planta {
     @Column(name = "piso", nullable = false)
     private String Piso;
 
-    @OneToMany
+    @OneToMany(fetch = FetchType.LAZY)
     @Column(name = "zona", nullable = false)
     private List<Zona> zona;
     

@@ -15,7 +15,7 @@ public class Vacuna {
     @Column(name = "id", nullable = false)
     private Long id;
 
-    @OneToMany
+    @OneToMany(fetch = FetchType.LAZY)
     @JoinColumn(name = "tipo_vacuna", nullable = false)
     private List<TipoVacuna> tipo_vacuna;
 }

@@ -22,15 +22,15 @@ public class Cita {
     @Column(name = "descripcion_patalogica", nullable = false)
     private String descripcion_patalogica;
 
-    @OneToMany
+    @OneToMany(fetch = FetchType.LAZY)
     @Column(name = "medico", nullable = false)
     private List<Personal> personal;
     
-    @OneToMany
+    @OneToMany(fetch = FetchType.LAZY)
     @Column(name = "tipo_cita", nullable = false)
     private List<TipoCita> tipoCita;
     
-    @OneToMany
+    @OneToMany(fetch = FetchType.LAZY)
     @Column(name = "paciente", nullable = false)
     private List<Paciente> paciente;
 

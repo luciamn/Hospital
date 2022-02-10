@@ -17,6 +17,6 @@ public class TipoVacuna {
     @Column(name = "nombre", nullable = false)
     private String nombre;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     private Vacuna vacuna;
 }

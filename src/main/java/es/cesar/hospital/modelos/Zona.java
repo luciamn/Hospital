@@ -18,15 +18,15 @@ public class Zona {
     @Column(name = "especializacion", nullable = false)
     private String especializacion;
 
-    @OneToMany
+    @OneToMany(fetch = FetchType.LAZY)
     @JoinColumn(name = "planta", nullable = false)
     private List<Planta> planta;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "habitacion", nullable = false)
     private Habitacion habitacion;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "personal", nullable = false)
     private Personal personal;
     
