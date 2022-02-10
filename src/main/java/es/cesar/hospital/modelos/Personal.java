@@ -37,7 +37,7 @@ public class Personal {
     @JoinColumn(name = "tipo_personal", nullable = false)
     private TipoPersonal tipoPersonal;
 
-    @OneToMany
+    @ManyToMany
     @Column(name = "cita", nullable = false)
     private List<Cita> cita;
     

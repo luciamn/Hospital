@@ -19,6 +19,6 @@ public class TipoPersonal {
     @Column(name = "tipo", nullable = false)
     private String tipo;
 
-    @OneToMany
-    private List<Personal> personal;
+    @ManyToOne
+    private Personal personal;
 }

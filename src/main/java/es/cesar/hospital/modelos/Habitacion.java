@@ -19,12 +19,12 @@ public class Habitacion {
     @Column(name="ocupado", nullable = false)
     private boolean ocupado;
 
-    @OneToOne
-    @JoinColumn(name="zona", nullable = false)
-    private Zona zona;
-
     @OneToMany
+    @JoinColumn(name="zona", nullable = false)
+    private List<Zona> zona;
+
+    @ManyToOne
     @Column(name = "paciente", nullable = false)
-    private List<Paciente> paciente;
+    private Paciente paciente;
     
 }

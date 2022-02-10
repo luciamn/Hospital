@@ -18,8 +18,8 @@ public class TipoCita {
     @Column(name = "tipo_cita", nullable = false)
     private String tipo_cita;
     
-    @OneToMany
+    @ManyToOne
     @Column(name = "cita", nullable = false)
-    private List<Cita> cita;
+    private Cita cita;
 
 }

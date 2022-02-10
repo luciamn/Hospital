@@ -18,16 +18,16 @@ public class Zona {
     @Column(name = "especializacion", nullable = false)
     private String especializacion;
 
-    @ManyToOne
+    @OneToMany
     @JoinColumn(name = "planta", nullable = false)
-    private Planta planta;
+    private List<Planta> planta;
 
-    @OneToMany
+    @ManyToOne
     @Column(name = "habitacion", nullable = false)
-    private List<Habitacion> habitacion;
+    private Habitacion habitacion;
 
-    @OneToMany
+    @ManyToOne
     @Column(name = "personal", nullable = false)
-    private List<Personal> personal;
+    private Personal personal;
     
 }

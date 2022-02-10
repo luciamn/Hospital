@@ -3,6 +3,7 @@ package es.cesar.hospital.modelos;
 import lombok.Data;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Data
 @Entity
@@ -20,9 +21,8 @@ public class Ambulancia {
     @Column(name = "clase", nullable = false)
     private String clase;
 
-
-    @OneToOne
+    @OneToMany
     @JoinColumn(name = "conductor", nullable = false)
-    private Conductor conductor;
+    private List<Conductor> conductor;
 
 }
