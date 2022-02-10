@@ -3,19 +3,20 @@ package es.cesar.hospital.modelos;
 import lombok.Data;
 
 import javax.persistence.*;
-import java.util.List;
 
 @Data
 @Entity
 @Table(name = "vacuna")
-public class Vacuna {
+public class TipoVacuna {
 
     @Id
     @GeneratedValue
     @Column(name = "id", nullable = false)
     private Long id;
 
-    @OneToMany
-    @JoinColumn(name = "tipo_vacuna", nullable = false)
-    private List<TipoVacuna> tipo_vacuna;
+    @Column(name = "nombre", nullable = false)
+    private String nombre;
+
+    @ManyToOne
+    private Vacuna vacuna;
 }

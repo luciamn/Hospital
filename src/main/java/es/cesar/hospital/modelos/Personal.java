@@ -38,7 +38,10 @@ public class Personal {
     private TipoPersonal tipoPersonal;
 
     @ManyToMany
-    @Column(name = "cita", nullable = false)
+    @JoinColumn(name = "cita", nullable = false)
     private List<Cita> cita;
-    
+
+    @OneToMany
+    @JoinColumn(name = "zona", nullable = false)
+    private List<Cita> zona_asignada;
 }

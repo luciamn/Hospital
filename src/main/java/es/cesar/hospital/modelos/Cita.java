@@ -22,16 +22,16 @@ public class Cita {
     @Column(name = "descripcion_patalogica", nullable = false)
     private String descripcion_patalogica;
 
-    @OneToOne
+    @OneToMany
     @Column(name = "medico", nullable = false)
-    private Personal personal;
+    private List<Personal> personal;
     
     @OneToMany
     @Column(name = "tipo_cita", nullable = false)
     private List<TipoCita> tipoCita;
     
     @OneToMany
-    @Column(name = "", nullable = false)
+    @Column(name = "paciente", nullable = false)
     private List<Paciente> paciente;
 
 }

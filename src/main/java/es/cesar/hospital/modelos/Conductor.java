@@ -9,8 +9,8 @@ import java.util.List;
 @Table(name = "conductor")
 public class Conductor extends Personal{
 
-    @ManyToOne
-    @Column(name = "ambulancia", nullable = false)
-    private Ambulancia ambulancia;
+    @OneToMany
+    @JoinColumn(name = "ambulancia", nullable = false)
+    private List<Ambulancia> ambulancia;
 
 }

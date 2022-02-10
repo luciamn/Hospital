@@ -21,8 +21,8 @@ public class Ambulancia {
     @Column(name = "clase", nullable = false)
     private String clase;
 
-    @OneToMany
+    @ManyToOne
     @JoinColumn(name = "conductor", nullable = false)
-    private List<Conductor> conductor;
+    private Conductor conductor;
 
 }

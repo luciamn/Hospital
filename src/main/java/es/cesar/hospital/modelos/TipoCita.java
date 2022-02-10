@@ -15,11 +15,11 @@ public class TipoCita {
     @Column(name = "id", nullable = false)
     private Long id;
     
-    @Column(name = "tipo_cita", nullable = false)
+    @JoinColumn(name = "tipo_cita", nullable = false)
     private String tipo_cita;
     
     @ManyToOne
-    @Column(name = "cita", nullable = false)
+    @JoinColumn(name = "cita", nullable = false)
     private Cita cita;
 
 }

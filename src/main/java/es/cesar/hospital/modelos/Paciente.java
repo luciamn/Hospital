@@ -38,12 +38,12 @@ public class Paciente {
     @Column(name = "telefono", nullable = false)
     private String telefono;
 
-    @OneToOne
-    @JoinColumn(name = "habitacion", nullable = false)
-    private Habitacion habitacion;
+    @OneToMany
+    @Column(name = "habitacion")
+    private List<Habitacion> habitacion;
     
     @ManyToMany
-    @Column(name = "cita")
+    @JoinColumn(name = "cita")
     private List<Cita> cita;
 
     //Getters y Setters
@@ -95,11 +95,19 @@ public class Paciente {
         this.telefono = telefono;
     }
 
-    public Habitacion getHabitacion() {
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public List<Habitacion> getHabitacion() {
         return habitacion;
     }
 
-    public void setHabitacion(Habitacion habitacion) {
+    public void setHabitacion(List<Habitacion> habitacion) {
         this.habitacion = habitacion;
     }
 
@@ -113,21 +121,23 @@ public class Paciente {
 
     //Constructores
 
-    public Paciente(Long id, String nombre, String apellidos, String contrasena, String dni, String telefono, Habitacion habitacion, List<Cita> cita) {
+    public Paciente(Long id, String nombre, String apellidos, String contrasena, String email, String dni, String telefono, List<Habitacion> habitacion, List<Cita> cita) {
         this.id = id;
         this.nombre = nombre;
         this.apellidos = apellidos;
         this.contrasena = contrasena;
+        this.email = email;
         this.dni = dni;
         this.telefono = telefono;
         this.habitacion = habitacion;
         this.cita = cita;
     }
 
-    public Paciente(String nombre, String apellidos, String contrasena, String dni, String telefono, Habitacion habitacion, List<Cita> cita) {
+    public Paciente(String nombre, String apellidos, String contrasena, String email, String dni, String telefono, List<Habitacion> habitacion, List<Cita> cita) {
         this.nombre = nombre;
         this.apellidos = apellidos;
         this.contrasena = contrasena;
+        this.email = email;
         this.dni = dni;
         this.telefono = telefono;
         this.habitacion = habitacion;

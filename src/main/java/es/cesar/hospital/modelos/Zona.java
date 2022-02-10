@@ -23,11 +23,11 @@ public class Zona {
     private List<Planta> planta;
 
     @ManyToOne
-    @Column(name = "habitacion", nullable = false)
+    @JoinColumn(name = "habitacion", nullable = false)
     private Habitacion habitacion;
 
     @ManyToOne
-    @Column(name = "personal", nullable = false)
+    @JoinColumn(name = "personal", nullable = false)
     private Personal personal;
     
 }

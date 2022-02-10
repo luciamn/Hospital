@@ -24,7 +24,7 @@ public class Habitacion {
     private List<Zona> zona;
 
     @ManyToOne
-    @Column(name = "paciente", nullable = false)
+    @JoinColumn(name = "paciente")
     private Paciente paciente;
     
 }
