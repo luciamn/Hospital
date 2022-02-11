@@ -21,8 +21,7 @@ public class Ambulancia {
     @Column(name = "clase", nullable = false)
     private String clase;
 
-    @ManyToOne(fetch = FetchType.EAGER)
-    @Column(name = "conductor", nullable = false)
-    private Conductor conductor;
+    @ManyToMany(fetch = FetchType.EAGER)
+    private List<Conductor> conductor;
 
 }

@@ -19,7 +19,6 @@ public class TipoCita {
     private String tipo_cita;
     
     @ManyToOne(fetch = FetchType.EAGER)
-    @Column(name = "cita", nullable = false)
     private Cita cita;
 
 }
