@@ -66,4 +66,7 @@ public class Paciente {
         this.habitacion = habitacion;
         this.cita = cita;
     }
+
+    public Paciente(String nombre, String apellidos, String contrasena, String email, String dni, Habitacion habitacion, Cita cita) {
+    }
 }

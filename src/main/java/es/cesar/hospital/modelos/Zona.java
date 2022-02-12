@@ -23,7 +23,7 @@ public class Zona {
     private List<Planta> planta;
 
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "habitacion", nullable = false)
+    @Column(name = "habitacion", nullable = false)
     private Habitacion habitacion;
 
     @ManyToOne(fetch = FetchType.EAGER)

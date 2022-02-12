@@ -14,6 +14,15 @@ public class PacienteServicioIMPL implements PacienteServicio{
 
     @Override
     public Paciente guardarPaciente(PacienteRegistroDTO registroDTO){
-        return null;
+        Paciente paciente = new Paciente(
+                registroDTO.getNombre(),
+                registroDTO.getApellidos(),
+                registroDTO.getContrasena(),
+                registroDTO.getEmail(),
+                registroDTO.getDni(),
+                registroDTO.getHabitacion(),
+                registroDTO.getCita());
+
+        return pacienteRepositorio.save(paciente);
     }
 }
