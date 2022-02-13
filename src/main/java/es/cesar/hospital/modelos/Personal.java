@@ -1,10 +1,15 @@
 package es.cesar.hospital.modelos;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
+
 import javax.persistence.*;
 import java.util.List;
 
 @Data
+@NoArgsConstructor
+@AllArgsConstructor
 @Entity
 @Table(name = "personal")
 public class Personal {
@@ -44,4 +49,6 @@ public class Personal {
     @OneToMany
     @JoinColumn(name = "zona", nullable = false)
     private List<Cita> zona_asignada;
+
+
 }
