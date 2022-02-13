@@ -2,7 +2,6 @@ package es.cesar.hospital.controladores;
 
 import es.cesar.hospital.dto.PacienteRegistroDTO;
 import es.cesar.hospital.servicio.PacienteServicio;
-import net.bytebuddy.asm.Advice;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -27,12 +26,12 @@ public class RegistroPacienteControlador {
 
     @GetMapping
     public String mostrarFomularioDeRegistro(){
-        return "registro";
+        return "registroPaciente";
     }
 
     @PostMapping
     public String registrarCuentaDePaciente(@ModelAttribute("paciente") PacienteRegistroDTO registroDTO){
         pacienteServicio.guardarPaciente(registroDTO);
-        return "redirect:/registro?exito";
+        return "redirect:/registroPaciente?exito";
     }
 }

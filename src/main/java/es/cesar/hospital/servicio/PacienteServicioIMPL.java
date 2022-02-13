@@ -4,6 +4,8 @@ import es.cesar.hospital.dto.PacienteRegistroDTO;
 import es.cesar.hospital.modelos.Paciente;
 import es.cesar.hospital.repositorio.PacienteRepositorio;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -24,5 +26,10 @@ public class PacienteServicioIMPL implements PacienteServicio{
                 registroDTO.getCita());
 
         return pacienteRepositorio.save(paciente);
+    }
+
+    @Override
+    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+        return null;
     }
 }
