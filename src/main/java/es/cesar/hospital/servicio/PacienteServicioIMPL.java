@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class PacienteServicioIMPL implements PacienteServicio{
 
-    @Autowired
+    @Autowired  
     private PacienteRepositorio pacienteRepositorio;
 
     @Override
