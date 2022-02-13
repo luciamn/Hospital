@@ -2,23 +2,25 @@
 <html lang="es" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Registro</title>
+    <title>Registro de Personal</title>
     <link type="text/css" rel="stylesheet" href="../static/css/bootstrap.min.css">
-
 </head>
 <body>
-<h1>Hola amigos</h1>
+
+<h1>Hola Mundo</h1>
 <script src="../static/js/bootstrap.min.js"></script>
+
+
 <nav class="navbar navbar-fixed-top">
     <div class="container">
         <div class="navbar-header">
             <button type="button" class="navbar-toggler collapse"
                     data-toggle="collapse" data-target="#navbar" aria-expanded="false"
                     aria-controls="navbar">
-                    <span class="sr-only">Toogle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
+                <span class="sr-only">Toogle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
             </button>
             <a class="navbar-brand" href="#" th:href="@{/}">Registro e inicio de sesion</a>
         </div>
@@ -33,10 +35,10 @@
         <div class="col-md-6 col-md-offset-3">
             <div th:if="${param.exito}">
                 <div class="alert alert-info">
-                    Se ha registrado exitosamente en la web</div>
+                    Se ha registrado exitosamente en la web
                 </div>
                 <h1>Registrate</h1>
-                <form th:action="@{/registro}" method="post" th:object="${paciente}">
+                <form th:action="@{/registroPersonal}" method="post" th:object="${personal}">
                     <div class="input-group">
                         <label class="form-control" for="nombre">Nombre: </label>
                         <input id="nombre" type="text" class="form-control" th:field="*{nombre}" required autofocus="autofocus">
@@ -68,9 +70,10 @@
                     </div>
 
                 </form>
-
+            </div>
         </div>
     </div>
 </div>
+
 </body>
 </html>
