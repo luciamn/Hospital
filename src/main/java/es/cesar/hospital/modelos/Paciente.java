@@ -30,14 +30,14 @@ public class Paciente implements Serializable{
     @Column(name = "contrasena", nullable = false)
     private String contrasena;
 
+    @Column(name = "email", nullable = false)
+    private String email;
+
     @Column(name = "dni", nullable = false)
     private String dni;
 
     @Column(name = "telefono", nullable = false)
     private String telefono;
-
-    @Column(name = "identificador", nullable = false)
-    private Long identificador;
 
     @OneToOne
     @JoinColumn(name = "habitacion", nullable = false)

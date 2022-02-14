@@ -5,6 +5,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public class PacienteDAO extends JpaRepository<Paciente, long> {
-    public Paciente findByUsername(String username);
+public interface PacienteDao extends JpaRepository<Paciente, Long> {
+    public Paciente findByUserName(String username);
 }
