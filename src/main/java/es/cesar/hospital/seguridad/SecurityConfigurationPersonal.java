@@ -18,6 +18,9 @@ import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 public class SecurityConfigurationPersonal extends WebSecurityConfigurerAdapter {
 
     @Autowired
+    private PersonalDetailsServiceImpl personalDetailsService;
+
+    @Autowired
     private PersonalServicio personalServicio;
 
     @Bean
@@ -25,25 +28,28 @@ public class SecurityConfigurationPersonal extends WebSecurityConfigurerAdapter 
         return new BCryptPasswordEncoder();
     }
 
-    @Bean
-    public DaoAuthenticationProvider authenticationProvider(){
-        DaoAuthenticationProvider auth = new DaoAuthenticationProvider();
-        auth.setUserDetailsService(personalServicio);
-        auth.setPasswordEncoder(passwordEncoder());
-        return auth;
-    }
-
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-        auth.authenticationProvider(authenticationProvider());
+        auth.userDetailsService(personalDetailsService).passwordEncoder(passwordEncoder());
     }
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http.authorizeRequests().antMatchers(
-                "/registroPersonal**",
-                "/js/**",
-                "/css/**",
-                "/img/**").permitAll().anyRequest().authenticated().and().formLogin().loginPage("/loginPersonal").permitAll().and().logout().invalidateHttpSession(true).clearAuthentication(true).logoutRequestMatcher(new AntPathRequestMatcher("/logout")).logoutSuccessUrl("/loginPersonal?logout").permitAll();
+        http.authorizeRequests()
+                .antMatchers("/","/auth/","/public/","/css/","/js/")
+                .permitAll()
+                .anyRequest()
+                .authenticated()
+                .and()
+                .formLogin()
+                .loginPage("/auth/loginPersonal")
+                .defaultSuccessUrl("/private/index", true)
+                .failureUrl("/auth/loginPersonal?error=true")
+                .loginProcessingUrl("/auth/loginPersonal-post")
+                .permitAll()
+                .and()
+                .logout()
+                .logoutUrl("/logoutPersonal")
+                .logoutSuccessUrl("/public/index");
     }
 }

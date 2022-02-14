@@ -4,17 +4,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
-public class RegistroController {
-
-    @GetMapping("/login")
-    public String iniciarSesion(){
-        return "loginPersonal";
-    }
+public class InicioPersonalController {
 
     @GetMapping("/")
-    public String paginaInicio(){
-        return "index";
+    public String inicio(){
+        return "inicioPersonal";
     }
-
-
 }
