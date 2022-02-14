@@ -30,6 +30,6 @@ public class RegistroPersonalControlador {
     @PostMapping
     public String registrarCuentaPersonal(@ModelAttribute("personal") PersonalRegistroDTO registroDTO){
         personalServicio.guardarPersonal(registroDTO);
-        return "redirect:/registro?exito";
+        return "redirect:/registroPersonal?exito";
     }
 }

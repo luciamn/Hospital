@@ -13,7 +13,7 @@ import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 @Configuration
 @EnableWebSecurity
-public class SecurityConfiguration {
+public class SecurityConfigurationPaciente {
 
     @Autowired
     private PacienteServicio pacienteServicio;
