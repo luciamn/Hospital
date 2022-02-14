@@ -25,7 +25,7 @@ public class PacienteRegistroDTO {
     private Cita cita;
 
     //Constructores
-    public PacienteRegistroDTO(String nombre, String apellidos, String contrasena, String email, String dni, String telefono, Habitacion habitacion, Cita cita) {
+    public PacienteRegistroDTO(String nombre, String apellidos, String contrasena, String email, String dni, String telefono) {
         super();
         this.nombre = nombre;
         this.apellidos = apellidos;
@@ -33,8 +33,6 @@ public class PacienteRegistroDTO {
         this.email = email;
         this.dni = dni;
         this.telefono = telefono;
-        this.habitacion = habitacion;
-        this.cita = cita;
     }
 
     public PacienteRegistroDTO(String email) {

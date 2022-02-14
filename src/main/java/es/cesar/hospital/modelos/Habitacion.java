@@ -26,5 +26,12 @@ public class Habitacion {
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "paciente")
     private Paciente paciente;
-    
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
 }

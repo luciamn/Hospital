@@ -7,6 +7,7 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 
 public interface PacienteServicio extends UserDetailsService {
+
     public Paciente guardarPaciente(PacienteRegistroDTO registroDTO);
 
     @Override
