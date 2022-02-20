@@ -20,8 +20,6 @@ public class SecurityConfigurationPersonal extends WebSecurityConfigurerAdapter 
     @Autowired
     private PersonalDetailsServiceImpl personalDetailsService;
 
-    @Autowired
-    private PersonalServicio personalServicio;
 
     @Bean
     public BCryptPasswordEncoder passwordEncoder(){
@@ -36,20 +34,20 @@ public class SecurityConfigurationPersonal extends WebSecurityConfigurerAdapter 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
-                .antMatchers("/","/auth/","/public/","/css/","/js/")
+                .antMatchers("/","/auth/**","/public/**","/css/?**","/js/**")
                 .permitAll()
                 .anyRequest()
                 .authenticated()
                 .and()
                 .formLogin()
                 .loginPage("/auth/loginPersonal")
-                .defaultSuccessUrl("/private/index", true)
+                .defaultSuccessUrl("/private/indexPersonal", true)
                 .failureUrl("/auth/loginPersonal?error=true")
                 .loginProcessingUrl("/auth/loginPersonal-post")
                 .permitAll()
                 .and()
                 .logout()
                 .logoutUrl("/logoutPersonal")
-                .logoutSuccessUrl("/public/index");
+                .logoutSuccessUrl("/public/indexPersonal");
     }
 }

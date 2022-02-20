@@ -16,8 +16,8 @@ public class PersonalServicio {
     @Autowired
     private BCryptPasswordEncoder passwordEncoder;
 
-    public Personal findByEmail(String email){
-        return personalRepositorio.findByEmail(email);
+    public Personal findBydni(String dni){
+            return personalRepositorio.findBydni(dni);
     }
     public Personal registar(Personal p){
         p.setContrasena(passwordEncoder.encode(p.getContrasena()));

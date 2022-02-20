@@ -19,11 +19,19 @@ public class RegistroPersonalController {
     @Autowired
     private PersonalServicio personalServicio;
 
+    @GetMapping("/auth/loginPersonal")
+    public String login(Model model){
+        model.addAttribute("personal", new Personal());
+        return "loginPersonal";
+    }
+
     @GetMapping("/auth/registroPersonal")
     public String registroForm(Model model){
         model.addAttribute("personal", new Personal());
         return "registroPersonal";
     }
+
+
 
     @PostMapping("/auth/registroPersonal")
     public String registro(@Validated @ModelAttribute Personal personal , BindingResult result, Model model){

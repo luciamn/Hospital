@@ -1,7 +1,9 @@
 package es.cesar.hospital.modelos;
 
 
+import com.sun.istack.NotNull;
 import lombok.Data;
+import org.hibernate.annotations.NaturalId;
 
 import javax.persistence.*;
 import java.util.List;
@@ -12,7 +14,7 @@ import java.util.List;
 public class TipoPersonal {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
     private Long id;
 

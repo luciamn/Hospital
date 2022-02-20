@@ -1,21 +1,38 @@
 package es.cesar.hospital.modelos;
 
+import com.sun.istack.NotNull;
 import lombok.Data;
+import org.hibernate.annotations.NotFound;
+import org.hibernate.annotations.NotFoundAction;
+
 import javax.persistence.*;
 import java.util.List;
 
 @Data
 @Entity
-@Table(name = "personal")
+@Table(name = "personal", uniqueConstraints ={
+        @UniqueConstraint(columnNames = "email"),
+        @UniqueConstraint(columnNames = "dni"),
+        @UniqueConstraint(columnNames = "telefono")
+})
 public class Personal {
 
     @Id
     @GeneratedValue
-    @Column(name = "id", nullable = false)
+    @Column(name = "id", nullable = false, unique = true)
     private Long id;
 
     @Column(name = "nombre", nullable = false)
     private String nombre;
+
+    public String getDni() {
+        return dni;
+    }
+
+    public void setDni(String dni) {
+        this.dni = dni;
+    }
+
 
     @Column(name = "apellidos", nullable = false)
     private String apellidos;
@@ -32,15 +49,19 @@ public class Personal {
     @Column(name = "telefono", nullable = false)
     private String telefono;
 
-    @OneToOne
-    @JoinColumn(name = "turno", nullable = false)
+    @OneToOne(fetch = FetchType.EAGER)
+    @JoinTable(name = "turno",
+            joinColumns = @JoinColumn(name = "personal_id", referencedColumnName = "id"),
+            inverseJoinColumns = @JoinColumn(name = "Turno_id", referencedColumnName = "id")
+    )
     private Turno turno;
 
-    @OneToOne
-    @JoinColumn(name = "tipo_personal", nullable = false)
+
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name="tipo_personal", unique = true, nullable = true)
     private TipoPersonal tipoPersonal;
 
-    @ManyToMany(fetch =FetchType.EAGER )
+    @ManyToMany(fetch =FetchType.EAGER)
     @Column(name = "cita")
     private List<Cita> cita;
 
@@ -51,7 +72,7 @@ public class Personal {
     //Constructores
 
 
-    public Personal(String nombre, String apellidos, String contrasena, String email, String dni, String telefono, Turno turno, TipoPersonal tipoPersonal, List<Cita> cita, List<Zona> zona_asignada) {
+    public Personal(String nombre, String apellidos, String contrasena, String email, String dni, String telefono, String turno, String tipoPersonal,  List<Cita> cita, List<Zona> zona_asignada) {
         this.nombre = this.nombre;
         this.apellidos = this.apellidos;
         this.contrasena = this.contrasena;
@@ -64,7 +85,7 @@ public class Personal {
         this.zona_asignada = this.zona_asignada;
     }
 
-    public Personal(String nombre, String apellidos, String contrasena, String email, String telefono, Turno turno, TipoPersonal tipoPersonal, Cita cita, Zona zona_asignada) {
+    public Personal(String nombre, String apellidos, String contrasena, String email, String telefono, String turno, String tipoPersonal,  Cita cita, Zona zona_asignada) {
 
     }
 

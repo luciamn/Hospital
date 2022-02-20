@@ -10,8 +10,6 @@ import javax.persistence.*;
 import java.util.List;
 
 @Data
-@NoArgsConstructor
-@AllArgsConstructor
 @Entity
 @Table(name = "paciente", uniqueConstraints ={
                                                 @UniqueConstraint(columnNames = "email"),
@@ -56,7 +54,20 @@ public class Paciente {
 
     //Constructores
 
-    public Paciente(String nombre, String apellidos, String contrasena, String email, String dni, String telefono, List<Habitacion> habitacion, Cita cita) {
+    public Paciente(String nombre, String apellidos, String contrasena, String email, String dni, String telefono) {
+        this.nombre = nombre;
+        this.apellidos = apellidos;
+        this.contrasena = contrasena;
+        this.email = email;
+        this.dni = dni;
+        this.telefono = telefono;
+    }
+
+    public Paciente() {
+    }
+
+    public Paciente(Long id, String nombre, String apellidos, String contrasena, String email, String dni, String telefono, List<Habitacion> habitacion, Cita cita) {
+        this.id = id;
         this.nombre = nombre;
         this.apellidos = apellidos;
         this.contrasena = contrasena;
@@ -65,8 +76,5 @@ public class Paciente {
         this.telefono = telefono;
         this.habitacion = habitacion;
         this.cita = cita;
-    }
-
-    public Paciente(String nombre, String apellidos, String contrasena, String email, String dni, Habitacion habitacion, Cita cita) {
     }
 }

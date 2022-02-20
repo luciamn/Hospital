@@ -18,11 +18,11 @@ public class PersonalDetailsServiceImpl implements UserDetailsService {
     private PersonalServicio personalServicio;
 
     @Override
-    public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
-        Personal personal = personalServicio.findByEmail(email);
+    public UserDetails loadUserByUsername(String dni) throws UsernameNotFoundException {
+        Personal personal = personalServicio.findBydni(dni);
         User.UserBuilder builder = null;
         if (personal != null){
-            builder = User.withUsername(email);
+            builder = User.withUsername(dni);
             builder.disabled(false);
             builder.password(personal.getContrasena());
             builder.authorities(new SimpleGrantedAuthority("ROLE_USER"));
