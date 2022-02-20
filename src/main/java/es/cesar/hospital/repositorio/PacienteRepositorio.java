@@ -1,12 +1,10 @@
 package es.cesar.hospital.repositorio;
 
-
-import es.cesar.hospital.modelos.Personal;
+import es.cesar.hospital.modelos.Paciente;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface PersonalRepositorio extends JpaRepository<Personal, Long> {
+public interface PacienteRepositorio extends JpaRepository<Paciente, Long> {
 
-    public Personal findByEmail(String email);
 }

@@ -18,36 +18,32 @@ import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 public class SecurityConfigurationPersonal extends WebSecurityConfigurerAdapter {
 
     @Autowired
-    private PersonalDetailsServiceImpl personalDetailsService;
-
+    private PersonalServicio personalServicio;
 
     @Bean
     public BCryptPasswordEncoder passwordEncoder(){
         return new BCryptPasswordEncoder();
     }
 
+    @Bean
+    public DaoAuthenticationProvider authenticationProvider(){
+        DaoAuthenticationProvider auth = new DaoAuthenticationProvider();
+        auth.setUserDetailsService(personalServicio);
+        auth.setPasswordEncoder(passwordEncoder());
+        return auth;
+    }
+
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-        auth.userDetailsService(personalDetailsService).passwordEncoder(passwordEncoder());
+        auth.authenticationProvider(authenticationProvider());
     }
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http.authorizeRequests()
-                .antMatchers("/","/auth/**","/public/**","/css/?**","/js/**")
-                .permitAll()
-                .anyRequest()
-                .authenticated()
-                .and()
-                .formLogin()
-                .loginPage("/auth/loginPersonal")
-                .defaultSuccessUrl("/private/indexPersonal", true)
-                .failureUrl("/auth/loginPersonal?error=true")
-                .loginProcessingUrl("/auth/loginPersonal-post")
-                .permitAll()
-                .and()
-                .logout()
-                .logoutUrl("/logoutPersonal")
-                .logoutSuccessUrl("/public/indexPersonal");
+        http.authorizeRequests().antMatchers(
+                "/registroPersonal**",
+                "/js/**",
+                "/css/**",
+                "/img/**").permitAll().anyRequest().authenticated().and().formLogin().loginPage("/loginPersonal").permitAll().and().logout().invalidateHttpSession(true).clearAuthentication(true).logoutRequestMatcher(new AntPathRequestMatcher("/logout")).logoutSuccessUrl("/loginPersonal?logout").permitAll();
     }
 }
