@@ -1,9 +1,6 @@
-package es.cesar.hospital.modelos;
+package es.cesar.hospital.modelo;
 
-import com.sun.istack.NotNull;
 import lombok.Data;
-import org.hibernate.annotations.NotFound;
-import org.hibernate.annotations.NotFoundAction;
 
 import javax.persistence.*;
 import java.util.List;
@@ -18,7 +15,7 @@ import java.util.List;
 public class Personal {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false, unique = true)
     private Long id;
 

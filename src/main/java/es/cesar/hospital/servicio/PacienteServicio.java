@@ -1,8 +1,9 @@
-package es.cesar.hospital.servicios;
+package es.cesar.hospital.servicio;
 
-import es.cesar.hospital.modelos.Paciente;
+import es.cesar.hospital.modelo.Paciente;
 import es.cesar.hospital.repositorio.PacienteRepositorio;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -12,6 +13,7 @@ public class PacienteServicio {
     @Autowired
     private PacienteRepositorio pacienteRepositorio;
 
+    @Qualifier("passwordEncoderPaciente")
     @Autowired
     private BCryptPasswordEncoder passwordEncoder;
 
@@ -23,4 +25,5 @@ public class PacienteServicio {
         p.setContrasena(passwordEncoder.encode(p.getContrasena()));
         return  pacienteRepositorio.save(p);
     }
+
 }

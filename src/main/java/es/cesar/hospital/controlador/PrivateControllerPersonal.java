@@ -1,7 +1,6 @@
-package es.cesar.hospital.controladores;
+package es.cesar.hospital.controlador;
 
-import es.cesar.hospital.modelos.Personal;
-import es.cesar.hospital.repositorio.PersonalRepositorio;
+import es.cesar.hospital.modelo.Personal;
 import es.cesar.hospital.servicio.PersonalServicio;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
@@ -12,11 +11,10 @@ import javax.servlet.http.HttpSession;
 
 @Controller
 @RequestMapping("/private")
-public class PrivateController {
+public class PrivateControllerPersonal {
 
     @Autowired
     private PersonalServicio personalServicio;
-
 
     @GetMapping("/indexPersonal")
     public String index(Authentication auth, HttpSession session){

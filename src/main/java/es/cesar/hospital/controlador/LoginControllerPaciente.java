@@ -1,7 +1,9 @@
 package es.cesar.hospital.controlador;
 
-import es.cesar.hospital.modelos.Paciente;
-import es.cesar.hospital.servicios.PacienteServicio;
+import es.cesar.hospital.modelo.Paciente;
+import es.cesar.hospital.modelo.Personal;
+import es.cesar.hospital.servicio.PacienteServicio;
+import es.cesar.hospital.servicio.PersonalServicio;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -12,7 +14,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
 @Controller
-public class LoginController {
+public class LoginControllerPaciente {
 
     @Autowired
     private PacienteServicio pacienteServicio;
@@ -32,4 +34,11 @@ public class LoginController {
         }
         return "redirect:/auth/loginPaciente";
     }
+
+    @GetMapping("/auth/loginPaciente")
+    public String login(Model model){
+        model.addAttribute("paciente", new Paciente());
+        return "loginPaciente";
+    }
+
 }

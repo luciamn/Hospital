@@ -1,7 +1,7 @@
 package es.cesar.hospital.seguridad;
 
-import es.cesar.hospital.modelos.Paciente;
-import es.cesar.hospital.servicios.PacienteServicio;
+import es.cesar.hospital.modelo.Paciente;
+import es.cesar.hospital.servicio.PacienteServicio;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.User;

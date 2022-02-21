@@ -1,7 +1,6 @@
 package es.cesar.hospital.seguridad;
 
-import es.cesar.hospital.modelos.Personal;
-import es.cesar.hospital.repositorio.PersonalRepositorio;
+import es.cesar.hospital.modelo.Personal;
 import es.cesar.hospital.servicio.PersonalServicio;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -12,7 +11,7 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 @Service
-public class PersonalDetailsServiceImpl implements UserDetailsService {
+public class UserDetailsServicePersonal implements UserDetailsService {
 
     @Autowired
     private PersonalServicio personalServicio;
