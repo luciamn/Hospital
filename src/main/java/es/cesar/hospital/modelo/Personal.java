@@ -1,24 +1,17 @@
-package es.cesar.hospital.modelos;
+package es.cesar.hospital.modelo;
 
-import com.sun.istack.NotNull;
 import lombok.Data;
-import org.hibernate.annotations.NotFound;
-import org.hibernate.annotations.NotFoundAction;
 
 import javax.persistence.*;
 import java.util.List;
 
 @Data
 @Entity
-@Table(name = "personal", uniqueConstraints ={
-        @UniqueConstraint(columnNames = "email"),
-        @UniqueConstraint(columnNames = "dni"),
-        @UniqueConstraint(columnNames = "telefono")
-})
+@Table(name = "personal")
 public class Personal {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false, unique = true)
     private Long id;
 
@@ -58,7 +51,7 @@ public class Personal {
 
 
     @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name="tipo_personal", unique = true, nullable = true)
+    @JoinColumn(name="tipo_personal")
     private TipoPersonal tipoPersonal;
 
     @ManyToMany(fetch =FetchType.EAGER)

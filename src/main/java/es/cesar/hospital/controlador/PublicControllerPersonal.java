@@ -1,4 +1,4 @@
-package es.cesar.hospital.controladores;
+package es.cesar.hospital.controlador;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class PublicControllerPersonal {
 
     @GetMapping("/indexPersonal")
-    public String index(){
+    public String indexPaciente(){
         return "logoutPersonal";
     }
 }

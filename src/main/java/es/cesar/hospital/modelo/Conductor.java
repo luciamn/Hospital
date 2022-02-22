@@ -1,8 +1,6 @@
-package es.cesar.hospital.modelos;
+package es.cesar.hospital.modelo;
 
 import lombok.Data;
-import lombok.NoArgsConstructor;
-import lombok.Value;
 
 import javax.persistence.*;
 import java.util.List;

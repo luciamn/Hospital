@@ -1,10 +1,7 @@
-package es.cesar.hospital.modelos;
+package es.cesar.hospital.modelo;
 
 
-import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.NoArgsConstructor;
-import org.hibernate.annotations.Fetch;
 
 import javax.persistence.*;
 import java.util.List;
@@ -17,9 +14,11 @@ import java.util.List;
                                                 @UniqueConstraint(columnNames = "telefono")
 })
 public class Paciente {
-    
+
+    private static final long serialVersionUID = 1L;
+
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
     private Long id;
 

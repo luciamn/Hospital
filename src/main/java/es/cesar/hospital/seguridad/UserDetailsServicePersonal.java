@@ -1,7 +1,7 @@
 package es.cesar.hospital.seguridad;
 
-import es.cesar.hospital.modelos.Paciente;
-import es.cesar.hospital.servicios.PacienteServicio;
+import es.cesar.hospital.modelo.Personal;
+import es.cesar.hospital.servicio.PersonalServicio;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.User;
@@ -11,24 +11,27 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 @Service
-public class UserDetailsServicePaciente implements UserDetailsService {
+public class UserDetailsServicePersonal implements UserDetailsService {
 
     @Autowired
-    private PacienteServicio pacienteServicio;
+    private PersonalServicio personalServicio;
 
     @Override
-    public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException{
-        Paciente paciente = pacienteServicio.findByEmail(email);
+    public UserDetails loadUserByUsername(String dni) throws UsernameNotFoundException {
+        Personal personal = personalServicio.findBydni(dni);
         User.UserBuilder builder = null;
-
-        if(paciente != null){
-            builder = User.withUsername(email);
+        if (personal != null){
+            builder = User.withUsername(dni);
             builder.disabled(false);
-            builder.password(paciente.getContrasena());
+            builder.password(personal.getContrasena());
             builder.authorities(new SimpleGrantedAuthority("ROLE_USER"));
-        }else {
+
+        }else{
             throw new UsernameNotFoundException("Usuario no encontrado");
         }
+
         return builder.build();
+
     }
+
 }

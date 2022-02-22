@@ -1,12 +1,9 @@
-package es.cesar.hospital.modelos;
+package es.cesar.hospital.modelo;
 
 
-import com.sun.istack.NotNull;
 import lombok.Data;
-import org.hibernate.annotations.NaturalId;
 
 import javax.persistence.*;
-import java.util.List;
 
 @Data
 @Entity

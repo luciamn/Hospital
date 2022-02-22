@@ -18,7 +18,7 @@ import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 public class SecurityConfigurationPersonal extends WebSecurityConfigurerAdapter {
 
     @Autowired
-    private PersonalDetailsServiceImpl personalDetailsService;
+    private UserDetailsServicePersonal userDetailsServicePersonal;
 
 
     @Bean
@@ -28,7 +28,7 @@ public class SecurityConfigurationPersonal extends WebSecurityConfigurerAdapter 
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-        auth.userDetailsService(personalDetailsService).passwordEncoder(passwordEncoder());
+        auth.userDetailsService(userDetailsServicePersonal).passwordEncoder(passwordEncoder());
     }
 
     @Override

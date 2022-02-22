@@ -1,9 +1,8 @@
-package es.cesar.hospital.modelos;
+package es.cesar.hospital.modelo;
 
 import lombok.Data;
 
 import javax.persistence.*;
-import java.util.List;
 
 @Data
 @Entity

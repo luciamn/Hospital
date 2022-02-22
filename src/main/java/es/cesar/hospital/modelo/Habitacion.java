@@ -1,4 +1,4 @@
-package es.cesar.hospital.modelos;
+package es.cesar.hospital.modelo;
 
 import lombok.Data;
 
