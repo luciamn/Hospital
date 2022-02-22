@@ -22,16 +22,16 @@ public class Cita {
     @Column(name = "descripcion_patalogica", nullable = false)
     private String descripcion_patalogica;
 
-    @OneToMany(fetch = FetchType.LAZY)
-    @Column(name = "medico", nullable = false)
-    private List<Personal> personal;
-    
-    @OneToMany(fetch = FetchType.LAZY)
-    @Column(name = "tipo_cita", nullable = false)
-    private List<TipoCita> tipoCita;
-    
-    @OneToMany(fetch = FetchType.LAZY)
-    @Column(name = "paciente", nullable = false)
-    private List<Paciente> paciente;
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "medico", nullable = false)
+    private Personal personal;
+
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "paciente", nullable = false)
+    private Paciente paciente;
+
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "tipo_cita", nullable = false)
+    private TipoCita tipoCita;
 
 }

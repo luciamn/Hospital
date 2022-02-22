@@ -1,6 +1,7 @@
 package es.cesar.hospital.modelo;
 
 import lombok.Data;
+import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
 import java.util.List;
@@ -12,20 +13,11 @@ public class Personal {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id", nullable = false, unique = true)
+    @Column(name = "id", unique = true, nullable = false)
     private Long id;
 
     @Column(name = "nombre", nullable = false)
     private String nombre;
-
-    public String getDni() {
-        return dni;
-    }
-
-    public void setDni(String dni) {
-        this.dni = dni;
-    }
-
 
     @Column(name = "apellidos", nullable = false)
     private String apellidos;
@@ -42,40 +34,30 @@ public class Personal {
     @Column(name = "telefono", nullable = false)
     private String telefono;
 
-    @OneToOne(fetch = FetchType.EAGER)
-    @JoinTable(name = "turno",
-            joinColumns = @JoinColumn(name = "personal_id", referencedColumnName = "id"),
-            inverseJoinColumns = @JoinColumn(name = "Turno_id", referencedColumnName = "id")
-    )
-    private Turno turno;
-
-
     @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name="tipo_personal")
     private TipoPersonal tipoPersonal;
-
-    @ManyToMany(fetch =FetchType.EAGER)
-    @Column(name = "cita")
-    private List<Cita> cita;
 
     @OneToMany
     @JoinColumn(name = "zona")
     private List<Zona> zona_asignada;
 
+    @OneToMany
+    @JoinColumn(name = "cita")
+    private List<Cita> citas;
+
     //Constructores
 
 
-    public Personal(String nombre, String apellidos, String contrasena, String email, String dni, String telefono, String turno, String tipoPersonal,  List<Cita> cita, List<Zona> zona_asignada) {
-        this.nombre = this.nombre;
-        this.apellidos = this.apellidos;
-        this.contrasena = this.contrasena;
-        this.email = this.email;
-        this.dni = this.dni;
-        this.telefono = this.telefono;
-        this.turno = this.turno;
-        this.tipoPersonal = this.tipoPersonal;
-        this.cita = this.cita;
-        this.zona_asignada = this.zona_asignada;
+    public Personal(String nombre, String apellidos, String contrasena, String email, String dni, String telefono, TipoPersonal tipoPersonal, List<Zona> zona_asignada) {
+        this.nombre = nombre;
+        this.apellidos = apellidos;
+        this.contrasena = contrasena;
+        this.email = email;
+        this.dni = dni;
+        this.telefono = telefono;
+        this.tipoPersonal = tipoPersonal;
+        this.zona_asignada = zona_asignada;
     }
 
     public Personal(String nombre, String apellidos, String contrasena, String email, String telefono, String turno, String tipoPersonal,  Cita cita, Zona zona_asignada) {

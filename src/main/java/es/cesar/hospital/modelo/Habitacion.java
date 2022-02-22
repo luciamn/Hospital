@@ -1,11 +1,15 @@
 package es.cesar.hospital.modelo;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.util.List;
 
 @Data
+@AllArgsConstructor
+@NoArgsConstructor
 @Entity
 @Table(name="habitacion")
 public class Habitacion {
@@ -15,23 +19,25 @@ public class Habitacion {
     @Column(name = "id", nullable = false)
     private Long id;
 
-
     @Column(name="ocupado", nullable = false)
     private boolean ocupado;
 
-    @OneToMany
-    @JoinColumn(name="zona", nullable = false)
-    private List<Zona> zona;
+    @Column(name="numeroHabitacion", nullable = false)
+    private int numeroHabitacion;
 
-    @ManyToOne(fetch = FetchType.EAGER)
+    @OneToOne
+    @JoinColumn(name="zona", nullable = false)
+    private Zona zona;
+
+    @OneToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "paciente")
     private Paciente paciente;
 
-    public Long getId() {
-        return id;
+    public Habitacion(int numeroHabitacion, Zona zona) {
+        this.ocupado = false;
+        this.zona = zona;
+        this.numeroHabitacion = numeroHabitacion;
+        this.paciente = null;
     }
 
-    public void setId(Long id) {
-        this.id = id;
-    }
 }

@@ -1,12 +1,17 @@
 package es.cesar.hospital.modelo;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Data
+@AllArgsConstructor
+@NoArgsConstructor
 @Entity
-@Table(name = "vacuna")
+@Table(name = "tipo_Vacuna")
 public class TipoVacuna {
 
     @Id
@@ -17,6 +22,11 @@ public class TipoVacuna {
     @Column(name = "nombre", nullable = false)
     private String nombre;
 
-    @ManyToOne(fetch = FetchType.EAGER)
-    private Vacuna vacuna;
+    @OneToMany
+    @JoinColumn(name = "vacuna", nullable = false)
+    public List<Vacuna> vacuna;
+
+    public TipoVacuna(String nombre) {
+        this.nombre = nombre;
+    }
 }

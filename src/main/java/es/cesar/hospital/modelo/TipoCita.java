@@ -1,12 +1,18 @@
 package es.cesar.hospital.modelo;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
+import org.w3c.dom.stylesheets.LinkStyle;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Data
 @Entity
-@Table(name = "tipo_cita")
+@AllArgsConstructor
+@NoArgsConstructor
+@Table(name = "tipo_Cita")
 public class TipoCita {
 
     @Id
@@ -16,8 +22,14 @@ public class TipoCita {
     
     @Column(name = "tipo_cita", nullable = false)
     private String tipo_cita;
-    
-    @ManyToOne(fetch = FetchType.EAGER)
-    private Cita cita;
+
+    @OneToMany
+    @JoinColumn(name = "cita", nullable = false)
+    private List<Cita> cita;
+
+    public TipoCita(String tipo_cita) {
+        this.tipo_cita = tipo_cita;
+    }
+
 
 }
