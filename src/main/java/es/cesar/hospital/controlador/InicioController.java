@@ -8,6 +8,6 @@ public class InicioController {
 
     @GetMapping("/")
     public String index(){
-        return "inicio";
+        return "loginPaciente";
     }
 }

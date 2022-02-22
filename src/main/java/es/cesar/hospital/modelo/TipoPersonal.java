@@ -1,13 +1,17 @@
 package es.cesar.hospital.modelo;
 
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 
 @Data
+@AllArgsConstructor
+@NoArgsConstructor
 @Entity
-@Table(name = "tipoPersonal")
+@Table(name = "tipo_Personal")
 public class TipoPersonal {
 
     @Id
@@ -18,6 +22,7 @@ public class TipoPersonal {
     @Column(name = "tipo", nullable = false)
     private String tipo;
 
-    @ManyToOne(fetch = FetchType.EAGER)
-    private Personal personal;
+    public TipoPersonal(String tipo) {
+        this.tipo = tipo;
+    }
 }

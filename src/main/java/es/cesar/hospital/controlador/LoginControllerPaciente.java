@@ -1,9 +1,7 @@
 package es.cesar.hospital.controlador;
 
 import es.cesar.hospital.modelo.Paciente;
-import es.cesar.hospital.modelo.Personal;
 import es.cesar.hospital.servicio.PacienteServicio;
-import es.cesar.hospital.servicio.PersonalServicio;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

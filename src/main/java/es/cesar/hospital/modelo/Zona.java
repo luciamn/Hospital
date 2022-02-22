@@ -1,12 +1,16 @@
 package es.cesar.hospital.modelo;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.util.List;
 
 @Data
 @Entity
+@AllArgsConstructor
+@NoArgsConstructor
 @Table(name = "zona")
 public class Zona {
 
@@ -18,16 +22,17 @@ public class Zona {
     @Column(name = "especializacion", nullable = false)
     private String especializacion;
 
-    @OneToMany(fetch = FetchType.LAZY)
+    @OneToOne
     @JoinColumn(name = "planta", nullable = false)
-    private List<Planta> planta;
+    private Planta planta;
 
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "habitacion", nullable = false)
-    private Habitacion habitacion;
+    @OneToMany
+    @JoinColumn(name = "habitacionZona", nullable = false)
+    private List<Habitacion> habitaciones;
 
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "personal", nullable = false)
-    private Personal personal;
-    
+    public Zona(String especializacion, Planta planta ) {
+        this.especializacion = especializacion;
+        this.planta = planta;
+
+    }
 }

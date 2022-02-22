@@ -41,16 +41,12 @@ public class Paciente {
     private String telefono;
 
     @OneToMany
-    @Column(name = "habitacion")
-    private List<Habitacion> habitacion;
-    
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JoinTable(name = "cita",
-               joinColumns = @JoinColumn(name = "paciente_id", referencedColumnName = "id"),
-               inverseJoinColumns = @JoinColumn(name = "cita_id", referencedColumnName = "id")
-    )
-    private Cita cita;
+    @JoinColumn(name = "cita")
+    private List<Cita> citas;
 
+    @OneToOne
+    @JoinColumn(name = "habitacionPaciente")
+    private Habitacion habitacion;
     //Constructores
 
     public Paciente(String nombre, String apellidos, String contrasena, String email, String dni, String telefono) {
@@ -65,7 +61,7 @@ public class Paciente {
     public Paciente() {
     }
 
-    public Paciente(Long id, String nombre, String apellidos, String contrasena, String email, String dni, String telefono, List<Habitacion> habitacion, Cita cita) {
+    public Paciente(Long id, String nombre, String apellidos, String contrasena, String email, String dni, String telefono) {
         this.id = id;
         this.nombre = nombre;
         this.apellidos = apellidos;
@@ -73,7 +69,5 @@ public class Paciente {
         this.email = email;
         this.dni = dni;
         this.telefono = telefono;
-        this.habitacion = habitacion;
-        this.cita = cita;
     }
 }

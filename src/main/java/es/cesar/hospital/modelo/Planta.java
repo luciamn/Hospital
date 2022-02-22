@@ -1,12 +1,17 @@
 package es.cesar.hospital.modelo;
 
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
+
 import javax.persistence.*;
 import java.util.List;
 
 @Data
 @Entity
+@AllArgsConstructor
+@NoArgsConstructor
 @Table(name = "planta")
 public class Planta {
 
@@ -16,10 +21,15 @@ public class Planta {
     private Long id;
 
     @Column(name = "piso", nullable = false)
-    private String Piso;
+    private int Piso;
 
-    @OneToMany(fetch = FetchType.LAZY)
-    @Column(name = "zona", nullable = false)
+    @OneToMany
+    @JoinColumn(name = "Zona")
     private List<Zona> zona;
-    
+
+    public Planta(int piso) {
+        Piso = piso;
+    }
+
+
 }
