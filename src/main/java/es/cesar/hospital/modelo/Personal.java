@@ -8,7 +8,11 @@ import java.util.List;
 
 @Data
 @Entity
-@Table(name = "personal")
+@Table(name = "personal", uniqueConstraints ={
+        @UniqueConstraint(columnNames = "email"),
+        @UniqueConstraint(columnNames = "dni"),
+        @UniqueConstraint(columnNames = "telefono")
+})
 public class Personal {
 
     @Id
@@ -35,7 +39,7 @@ public class Personal {
     private String telefono;
 
     @OneToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name="tipo_personal")
+    @JoinColumn(name="tipo_personal", unique = true, nullable = true)
     private TipoPersonal tipoPersonal;
 
     @OneToMany

@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<span th:if="${session.usuario != null}">
+                    Bienvenid@
+                </span>
+<span class="font-italic" th:text="${session.usuario.email}"></span>
+
+<form th:action="@{/logoutPaciente}" method="POST">
+    <input  type="submit" class="btn btn-succes btn-block col-md-7 offset-3" value="Salir"/>
+</form>
+</body>
+</html>
