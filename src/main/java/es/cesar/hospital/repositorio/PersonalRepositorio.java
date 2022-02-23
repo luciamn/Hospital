@@ -7,5 +7,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface PersonalRepositorio extends JpaRepository<Personal, Long> {
-    public Personal findBydni(String email);
+    public Personal findBydni(String dni);
 }
